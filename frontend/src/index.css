@@ -1,0 +1,71 @@
+@import "@fontsource-variable/fraunces/standard.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "tailwindcss";
+
+/**
+ * CodeMentor design tokens.
+ *
+ * Concept: an inked, annotated notebook page rendered on blueprint-cool
+ * paper. Ink is the primary text/UI colour; the three accents each carry
+ * one specific meaning drawn straight from the product itself, rather
+ * than sitting there as decoration:
+ *   - highlighter (amber) marks hints and calls to action
+ *   - verified   (teal)  marks things that are working / passing
+ *   - flag       (red)   marks errors that need attention
+ */
+@theme {
+  --color-ink: #171b2e;
+  --color-ink-soft: #4b5163;
+  --color-ink-faint: #7d8299;
+  --color-paper: #eef0f4;
+  --color-surface: #ffffff;
+  --color-line: #d7d9e0;
+  --color-highlighter: #dfa429;
+  --color-highlighter-soft: #fbf0d9;
+  --color-verified: #3e7c6b;
+  --color-verified-soft: #e2efec;
+  --color-flag: #c1443a;
+  --color-flag-soft: #f8e4e2;
+
+  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv05", "cv10";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-highlighter-soft);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
